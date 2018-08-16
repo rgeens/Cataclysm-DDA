@@ -162,7 +162,7 @@ matrix:
           sources: *apt_sources
 
 before_install:
-  - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then curl -i https://api.github.com/repos/$TRAVIS_REPO_SLUG/pulls/$TRAVIS_PULL_REQUEST | grep "body" | grep "^SUMMARY:"; fi
+  - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then curl -u kevingranade:2bbef969c8bae780dba61c605a3f3c73a820ca4e -i https://api.github.com/repos/$TRAVIS_REPO_SLUG/pulls/$TRAVIS_PULL_REQUEST | grep "body" | grep "$SUMMARY:"; fi
 
 before_script:
   - if [ -n "${CLANG}" ]; then COMPILER="$CLANG"; fi
